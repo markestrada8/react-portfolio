@@ -7,8 +7,8 @@ const NavigationComponent = props => {
     const dynamicLink = (route, linkText) => {
         return (
             <div className="nav-link-wrapper">
-                <NavLink to="/blog" activeClassName="nav-link-active">
-                    Blog
+                <NavLink to={route} activeClassName="nav-link-active">
+                    {linkText}
                 </NavLink>
             </div>
         )
@@ -23,7 +23,7 @@ const NavigationComponent = props => {
                 }
                 return response.data;
             }).catch(error => {
-                console.log("Error signing out", error)
+                console.log("Error signing out --> ", error)
             });
     }
 
@@ -37,7 +37,7 @@ const NavigationComponent = props => {
                 </div>
 
                 <div className="nav-link-wrapper">
-                    <NavLink to="/about-me" activeClassName="nav-link-active">
+                    <NavLink to="/about" activeClassName="nav-link-active">
                         About
                     </NavLink>
                 </div>
@@ -48,7 +48,13 @@ const NavigationComponent = props => {
                     </NavLink>
                 </div>
 
-                {props.loggedInStatus === "LOGGED_IN" ? dynamicLink("/blog", "Blog") : null}
+                <div className="nav-link-wrapper">
+                    <NavLink to="/blog" activeClassName="nav-link-active">
+                        Blog
+                    </NavLink>
+                </div>
+
+                {props.loggedInStatus === "LOGGED_IN" ? dynamicLink("/portfolio-manager", "Portfolio Manager") : null}
             </div>
             <div className="right-side">
                 Mark Estrada
