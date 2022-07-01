@@ -24,6 +24,27 @@ class Blog extends Component {
     this.handleModalClose = this.handleModalClose.bind(this);
     this.handleSuccessfulBlogSubmission =
       this.handleSuccessfulBlogSubmission.bind(this);
+    this.handleDeleteClick = this.handleDeleteClick.bind(this);
+  }
+
+  handleDeleteClick(blog) {
+    axios
+      .delete(
+        `https:///api.devcamp.space/portfolio/portfolio_blogs/${blog.id}`,
+        { withCredentials: true }
+      )
+      .then((response) => {
+        console.log("handleDeleteClick blog response: ", response);
+        this.setState({
+          blogItems: this.state.blogItems.filter((blogItem) => {
+            return blogItem.id !== blog.id;
+          }),
+        });
+      })
+      .catch((error) => {
+        console.log("delete blog error: ", error);
+      });
+    return response.data;
   }
 
   handleSuccessfulBlogSubmission(blog) {
@@ -53,31 +74,36 @@ class Blog extends Component {
       return;
     }
 
+    // console.log(document.documentElement.offsetHeight);
+    // console.log(document.documentElement.scrollTop);
+    // console.log(window.innerHeight);
+    // console.log(window.innerHeight + document.documentElement.scrollTop + 1);
     if (
-      // window.innerHeight + document.documentElement.scrollTop ===
-      // document.documentElement.offsetHeight
-      window.innerHeight + window.pageYOffset >=
-      document.body.offsetHeight
+      window.innerHeight + document.documentElement.scrollTop + 1 >=
+      document.documentElement.offsetHeight
+      // window.innerHeight + window.pageYOffset >=
+      // document.body.offsetHeight
     ) {
+      // alert("scroll");
       this.getBlogItems();
     }
   }
 
-  testScroll() {
-    window.onscroll = function (ev) {
-      if (
-        window.innerHeight + window.pageYOffset >=
-        document.body.offsetHeight
-      ) {
-        alert("you're at the bottom of the page");
-      }
-    };
-  }
+  // testScroll() {
+  //   window.onscroll = function (ev) {
+  //     if (
+  //       window.innerHeight + window.pageYOffset >=
+  //       document.body.offsetHeight
+  //     ) {
+  //       alert("you're at the bottom of the page");
+  //     }
+  //   };
+  // }
 
   getBlogItems() {
     this.setState({
       currentPage: this.state.currentPage + 1,
-      isLoading: false,
+      // isLoading: false,
     });
 
     axios
@@ -108,7 +134,18 @@ class Blog extends Component {
 
   render() {
     const blogRecords = this.state.blogItems.map((blogItem) => {
-      return <BlogItem key={blogItem.id} blogItem={blogItem} />;
+      if (this.props.loggedInStatus === "LOGGED_IN") {
+        return (
+          <div key={blogItem.id} className="admin-blog-wrapper">
+            <BlogItem blogItem={blogItem} />
+            <a onClick={() => this.handleDeleteClick(blogItem)}>
+              <FontAwesomeIcon icon={"circle-minus"} />
+            </a>
+          </div>
+        );
+      } else {
+        return <BlogItem key={blogItem.id} blogItem={blogItem} />;
+      }
     });
 
     return (

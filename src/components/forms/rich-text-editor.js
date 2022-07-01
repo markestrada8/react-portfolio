@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { EditorState, convertToRaw } from "draft-js";
+import { EditorState, convertToRaw, ContentState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
+import { faThList } from "@fortawesome/free-solid-svg-icons";
 
 export default class RichTextEditor extends Component {
   constructor(props) {
@@ -15,6 +16,21 @@ export default class RichTextEditor extends Component {
     this.onEditorStateChange = this.onEditorStateChange.bind(this);
     this.getBase64 = this.getBase64.bind(this);
     this.uploadFile = this.uploadFile.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.editMode && this.props.contentToEdit) {
+      const blocksFromHtml = htmlToDraft(this.props.contentToEdit);
+      const { contentBlocks, entityMap } = blocksFromHtml;
+      const contentState = ContentState.createFromBlockArray(
+        contentBlocks,
+        entityMap
+      );
+      const editorState = EditorState.createWithContent(contentState);
+      this.setState({
+        editorState,
+      });
+    }
   }
 
   onEditorStateChange(editorState) {

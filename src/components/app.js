@@ -16,7 +16,6 @@ import PortfolioManager from "./pages/portfolio-manager";
 import PortfolioDetail from "./portfolio/portfolio-detail";
 import Auth from "./pages/auth";
 import NoMatch from "./pages/no-match";
-import portfolioDetail from "./portfolio/portfolio-detail";
 import Icons from "../helpers/icons";
 
 export default class App extends Component {
@@ -28,8 +27,9 @@ export default class App extends Component {
     this.state = {
       loggedInStatus: "NOT_LOGGED_IN",
     };
+
     this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
-    this.handleUnSuccessfulLogin = this.handleUnSuccessfulLogin.bind(this);
+    this.handleUnsuccessfulLogin = this.handleUnsuccessfulLogin.bind(this);
     this.handleSuccessfulLogout = this.handleSuccessfulLogout.bind(this);
   }
 
@@ -39,7 +39,7 @@ export default class App extends Component {
     });
   }
 
-  handleUnSuccessfulLogin() {
+  handleUnsuccessfulLogin() {
     this.setState({
       loggedInStatus: "NOT_LOGGED_IN",
     });
@@ -53,14 +53,13 @@ export default class App extends Component {
 
   checkLoginStatus() {
     return axios
-      .get("https://api.devcamp.space/logged_in", { withCredentials: true })
+      .get("https://api.devcamp.space/logged_in", {
+        withCredentials: true,
+      })
       .then((response) => {
         const loggedIn = response.data.logged_in;
         const loggedInStatus = this.state.loggedInStatus;
 
-        //If loggedIn and status LOGGED_IN => return data
-        //If loggedIn and status NOT_LOGGED_IN => update state
-        //If no loggedIn and status LOGGED_IN => update state
         if (loggedIn && loggedInStatus === "LOGGED_IN") {
           return loggedIn;
         } else if (loggedIn && loggedInStatus === "NOT_LOGGED_IN") {
@@ -73,7 +72,9 @@ export default class App extends Component {
           });
         }
       })
-      .catch((error) => console.log("Error", error));
+      .catch((error) => {
+        console.log("Error", error);
+      });
   }
 
   componentDidMount() {
@@ -99,7 +100,7 @@ export default class App extends Component {
               loggedInStatus={this.state.loggedInStatus}
               handleSuccessfulLogout={this.handleSuccessfulLogout}
             />
-            <h2>{this.state.loggedInStatus}</h2>
+            {/* <h2>{this.state.loggedInStatus}</h2> */}
             <Switch>
               <Route exact path="/" component={Home} />
               <Route
@@ -122,7 +123,15 @@ export default class App extends Component {
                 )}
               />
 
-              <Route path="/b/:slug" component={BlogDetail} />
+              <Route
+                path="/b/:slug"
+                render={(props) => (
+                  <BlogDetail
+                    {...props}
+                    loggedInStatus={this.state.loggedInStatus}
+                  />
+                )}
+              />
               {this.state.loggedInStatus === "LOGGED_IN"
                 ? this.authorizedPages()
                 : null}
