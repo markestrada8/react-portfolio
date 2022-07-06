@@ -79,7 +79,9 @@ export default class BlogDetail extends Component {
       } else {
         return (
           <div className="content-container">
-            <h1 onClick={this.handleEditClick}>{title}</h1>
+            <h1 onClick={this.handleEditClick} style={{ cursor: "pointer" }}>
+              {title}
+            </h1>
             <BlogFeaturedImage featured_image_url={featured_image_url} />
             <div className="content">{ReactHtmlParser(content)}</div>
           </div>
