@@ -217,9 +217,9 @@ export default class PortfolioForm extends Component {
             value={this.state.category}
             onChange={this.handleChange}
           >
-            <option value="eCommerce">eCommerce</option>
-            <option value="Scheduling">Scheduling</option>
-            <option value="Enterprise">Enterprise</option>
+            <option value="film">Film</option>
+            <option value="music">Music</option>
+            <option value="cooking">Cooking</option>
           </select>
         </div>
         <div className="one-column">
@@ -232,9 +232,9 @@ export default class PortfolioForm extends Component {
           />
         </div>
 
-        <div className="image-uploaders three-column">
+        <div className="image-uploaders">
           {this.state.thumb_image_url && this.state.editMode ? (
-            <div className="edit-mode-image-wrapper">
+            <div className="portfolio-manager-image-wrapper">
               <img src={this.state.thumb_image_url} />
               <div className="image-removal-link">
                 <a onClick={() => this.deleteImage("thumb_image")}>
