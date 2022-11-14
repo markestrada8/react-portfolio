@@ -72,7 +72,7 @@ export default class PortfolioForm extends Component {
         id: id,
         name: name || "",
         description: description || "",
-        category: category || "eCommerce",
+        category: category || "E-commerce",
         position: position || "",
         url: url || "",
         editMode: true,
@@ -136,6 +136,7 @@ export default class PortfolioForm extends Component {
     if (this.state.logo) {
       formData.append("portfolio_item[logo]", this.state.logo);
     }
+    console.log(formData);
     return formData;
   }
 
@@ -176,7 +177,7 @@ export default class PortfolioForm extends Component {
         });
       })
       .then((error) => {
-        console.log("PortfolioForm handleSubmit error -->", error);
+        console.log("PortfolioForm handleSubmit error: ", error);
       });
     event.preventDefault();
   }
@@ -219,7 +220,7 @@ export default class PortfolioForm extends Component {
           >
             <option value="film">Film</option>
             <option value="music">Music</option>
-            <option value="cooking">Cooking</option>
+            <option value="Ecommerce">Ecommerce</option>
           </select>
         </div>
         <div className="one-column">

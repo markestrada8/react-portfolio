@@ -14,32 +14,26 @@ export default function () {
       ></div>
       <div className="right-column">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla at
-          volutpat diam ut. Sit amet justo donec enim diam vulputate ut pharetra
-          sit. Nibh venenatis cras sed felis eget velit. Sit amet massa vitae
-          tortor condimentum lacinia quis vel eros. Elit eget gravida cum sociis
-          natoque penatibus et magnis. Quis enim lobortis scelerisque fermentum
-          dui faucibus. Ac tortor vitae purus faucibus. Nulla pharetra diam sit
-          amet nisl suscipit adipiscing bibendum est. Aenean euismod elementum
-          nisi quis eleifend quam adipiscing vitae proin. Faucibus a
-          pellentesque sit amet porttitor. Sem integer vitae justo eget.
+          Hello! I am a fullstack developer looking to gain experience and work on
+          real-world projects using best-practices and industry standard technologies
+          and procedures. This portofolio represents projects I have worked on as well
+          as some of my interests.
         </p>
         <p>
-          Est lorem ipsum dolor sit amet consectetur adipiscing elit
-          pellentesque. Diam sollicitudin tempor id eu nisl nunc. Feugiat
-          vivamus at augue eget. Nisi vitae suscipit tellus mauris a. Vitae
-          semper quis lectus nulla at volutpat diam ut venenatis. Commodo sed
-          egestas egestas fringilla phasellus. Eget magna fermentum iaculis eu
-          non diam. Euismod elementum nisi quis eleifend quam adipiscing vitae
-          proin sagittis. Eget lorem dolor sed viverra ipsum nunc aliquet. Purus
-          in massa tempor nec feugiat nisl. Quis hendrerit dolor magna eget est
-          lorem ipsum dolor sit. Ultricies mi quis hendrerit dolor magna. Leo
-          duis ut diam quam nulla porttitor. Viverra adipiscing at in tellus
-          integer. Sed arcu non odio euismod lacinia at quis risus. Nisl vel
-          pretium lectus quam. Porttitor eget dolor morbi non. Lacus sed viverra
-          tellus in hac habitasse platea dictumst vestibulum. Faucibus pulvinar
-          elementum integer enim neque.
+          I have a BA in English literature from the University of Tennesse with a minor in
+          Classical Civilization. I served in the US Army working in Military Intelligence and
+          was stationed in Ft. Hood, TX. I deployed to Iraq in 2008-2009 in support of OIF II.
+        </p>
+        <p>
+          I have been interested in computers off and on through my life, but only
+          seriously sat down and started learning to code in December 2021. I was approached
+          by someone representing a Veteran Trasition Mission to enroll in a coding bootcamp
+          with Bottega University. I enjoyed the practice of solving problems and learning,
+          as well as the challenge of learning new technologies and the potential they have for
+          solving problems such as the challenge of working remotely during COVID-19 lockdowns.
+          I also see the transformative potential of emerging technologies such as AI, ML, IoT,
+          and Web3 and am curious to see how they can by used to help us solve the issues we face
+          and learn more about ourselves and our world.
         </p>
       </div>
     </div>

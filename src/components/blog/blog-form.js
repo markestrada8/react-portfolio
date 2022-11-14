@@ -61,7 +61,7 @@ export default class BlogForm extends Component {
 
   handleFeaturedImageDrop() {
     return {
-      addedfile: (file) => this.setState({ featured_image: file }),
+      addedfile: file => this.setState({ featured_image: file }),
     };
   }
 
@@ -90,7 +90,7 @@ export default class BlogForm extends Component {
     let formData = new FormData();
 
     formData.append("portfolio_blog[title]", this.state.title);
-    formData.append("portfolio_blog[blog_status]", this.state.blog_status);
+    // formData.append("portfolio_blog[blog_status]", this.state.blog_status);
     formData.append("portfolio_blog[content]", this.state.content);
 
     if (this.state.featured_image) {

@@ -53,8 +53,8 @@ export default class PortfolioContainer extends Component {
         <PortfolioItem
           key={item.id}
           item={item}
-          // url={item.url}
-          // slug={item.id}
+        // url={item.url}
+        // slug={item.id}
         />
       );
     });
@@ -78,8 +78,8 @@ export default class PortfolioContainer extends Component {
           <button className="btn" onClick={() => this.handleFilter("music")}>
             Music
           </button>
-          <button className="btn" onClick={() => this.handleFilter("cooking")}>
-            Cooking
+          <button className="btn" onClick={() => this.handleFilter("Ecommerce")}>
+            Ecommerce
           </button>
           <button
             className="btn"
