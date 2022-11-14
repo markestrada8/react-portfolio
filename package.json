@@ -2,6 +2,9 @@
   "name": "mark-estrada-react-portfolio",
   "version": "1.0.0",
   "description": "This is a personal portfolio application built in React",
+  "engines": {
+    "node": "14.19.3"
+  },
   "scripts": {
     "preinstall": "npm set audit false",
     "start": "webpack-dev-server --config webpack/dev.config.js --watch",
