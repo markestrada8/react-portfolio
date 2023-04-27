@@ -79,7 +79,7 @@ class Blog extends Component {
     // console.log(window.innerHeight);
     // console.log(window.innerHeight + document.documentElement.scrollTop + 1);
     if (
-      window.innerHeight + document.documentElement.scrollTop + 1 >=
+      window.innerHeight + document.documentElement.scrollTop + 1 ===
       document.documentElement.offsetHeight
       // window.innerHeight + window.pageYOffset >=
       // document.body.offsetHeight

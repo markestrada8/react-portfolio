@@ -1,13 +1,13 @@
-import axios from "axios";
-import React, { Component } from "react";
-import DropzoneComponent from "react-dropzone-component";
+import axios from "axios"
+import React, { Component } from "react"
+import DropzoneComponent from "react-dropzone-component"
 
-import "../../../node_modules/react-dropzone-component/styles/filepicker.css";
-import "../../../node_modules/dropzone/dist/min/dropzone.min.css";
+import "../../../node_modules/react-dropzone-component/styles/filepicker.css"
+import "../../../node_modules/dropzone/dist/min/dropzone.min.css"
 
 export default class PortfolioForm extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       name: "",
@@ -21,20 +21,20 @@ export default class PortfolioForm extends Component {
       editMode: false,
       apiUrl: "https://markestrada.devcamp.space/portfolio/portfolio_items",
       apiAction: "post",
-    };
+    }
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.componentConfig = this.componentConfig.bind(this);
-    this.djsConfig = this.djsConfig.bind(this);
-    this.handleThumbDrop = this.handleThumbDrop.bind(this);
-    this.handleBannerDrop = this.handleBannerDrop.bind(this);
-    this.handleLogoDrop = this.handleLogoDrop.bind(this);
-    this.deleteImage = this.deleteImage.bind(this);
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.componentConfig = this.componentConfig.bind(this)
+    this.djsConfig = this.djsConfig.bind(this)
+    this.handleThumbDrop = this.handleThumbDrop.bind(this)
+    this.handleBannerDrop = this.handleBannerDrop.bind(this)
+    this.handleLogoDrop = this.handleLogoDrop.bind(this)
+    this.deleteImage = this.deleteImage.bind(this)
 
-    this.thumbRef = React.createRef();
-    this.bannerRef = React.createRef();
-    this.logoRef = React.createRef();
+    this.thumbRef = React.createRef()
+    this.bannerRef = React.createRef()
+    this.logoRef = React.createRef()
   }
 
   deleteImage(imageType) {
@@ -46,11 +46,11 @@ export default class PortfolioForm extends Component {
       .then((response) => {
         this.setState({
           [`${imageType}_url`]: "",
-        });
+        })
       })
       .catch((error) => {
-        console.log("deleteImage error", error);
-      });
+        console.log("deleteImage error", error)
+      })
   }
 
   componentDidUpdate() {
@@ -65,9 +65,9 @@ export default class PortfolioForm extends Component {
         thumb_image_url,
         banner_image_url,
         logo_url,
-      } = this.props.portfolioToEdit;
+      } = this.props.portfolioToEdit
 
-      this.props.clearPortfolioToEdit();
+      this.props.clearPortfolioToEdit()
       this.setState({
         id: id,
         name: name || "",
@@ -81,26 +81,26 @@ export default class PortfolioForm extends Component {
         thumb_image_url: thumb_image_url || "",
         banner_image_url: banner_image_url || "",
         logo_url: logo_url || "",
-      });
+      })
     }
   }
 
   handleThumbDrop() {
     return {
       addedfile: (file) => this.setState({ thumb_image: file }),
-    };
+    }
   }
 
   handleBannerDrop() {
     return {
       addedfile: (file) => this.setState({ banner_image: file }),
-    };
+    }
   }
 
   handleLogoDrop() {
     return {
       addedfile: (file) => this.setState({ logo: file }),
-    };
+    }
   }
 
   componentConfig() {
@@ -108,42 +108,42 @@ export default class PortfolioForm extends Component {
       iconFiletypes: [".jpg", ".png"],
       showFiletypeIcon: true,
       postUrl: "https://httpbin.org/post",
-    };
+    }
   }
 
   djsConfig() {
     return {
       addRemoveLinks: true,
       maxFiles: 1,
-    };
+    }
   }
 
   buildForm() {
-    let formData = new FormData();
+    let formData = new FormData()
 
-    formData.append("portfolio_item[name]", this.state.name);
-    formData.append("portfolio_item[description]", this.state.description);
-    formData.append("portfolio_item[url]", this.state.url);
-    formData.append("portfolio_item[category]", this.state.category);
-    formData.append("portfolio_item[position]", this.state.position);
+    formData.append("portfolio_item[name]", this.state.name)
+    formData.append("portfolio_item[description]", this.state.description)
+    formData.append("portfolio_item[url]", this.state.url)
+    formData.append("portfolio_item[category]", this.state.category)
+    formData.append("portfolio_item[position]", this.state.position)
 
     if (this.state.thumb_image) {
-      formData.append("portfolio_item[thumb_image]", this.state.thumb_image);
+      formData.append("portfolio_item[thumb_image]", this.state.thumb_image)
     }
     if (this.state.banner_image) {
-      formData.append("portfolio_item[banner_image]", this.state.banner_image);
+      formData.append("portfolio_item[banner_image]", this.state.banner_image)
     }
     if (this.state.logo) {
-      formData.append("portfolio_item[logo]", this.state.logo);
+      formData.append("portfolio_item[logo]", this.state.logo)
     }
-    console.log(formData);
-    return formData;
+    console.log(formData)
+    return formData
   }
 
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
-    });
+    })
   }
 
   handleSubmit(event) {
@@ -155,9 +155,9 @@ export default class PortfolioForm extends Component {
     })
       .then((response) => {
         if (this.state.editMode) {
-          this.props.handleEditFormSubmission();
+          this.props.handleEditFormSubmission()
         } else {
-          this.props.handleNewFormSubmission(response.data.portfolio_item);
+          this.props.handleNewFormSubmission(response.data.portfolio_item)
         }
         this.setState({
           name: "",
@@ -173,13 +173,13 @@ export default class PortfolioForm extends Component {
           apiAction: "post",
         });
         [this.thumbRef, this.bannerRef, this.logoRef].forEach((ref) => {
-          ref.current.dropzone.removeAllFiles();
-        });
+          ref.current.dropzone.removeAllFiles()
+        })
       })
       .then((error) => {
-        console.log("PortfolioForm handleSubmit error: ", error);
-      });
-    event.preventDefault();
+        console.log("PortfolioForm handleSubmit error: ", error)
+      })
+    event.preventDefault()
   }
 
   render() {
@@ -298,6 +298,6 @@ export default class PortfolioForm extends Component {
           </button>
         </div>
       </form>
-    );
+    )
   }
 }
