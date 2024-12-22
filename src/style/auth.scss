@@ -1,3 +1,6 @@
+@use "mixins";
+@use "variables";
+
 .auth-page-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -11,7 +14,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $offwhite;
+    background-color: variables.$offwhite;
 
     .auth-title {
       margin: 0 20px;
@@ -19,8 +22,8 @@
     }
 
     .auth-form-container {
-      @include input-element();
-      @include base-grid();
+      @include mixins.input-element();
+      @include mixins.base-grid();
       gap: 21px;
       padding: 42px;
       margin: 0 50px;
@@ -30,7 +33,7 @@
 
         svg {
           font-size: 2em;
-          color: $teal;
+          color: variables.$teal;
           margin-right: 15px;
         }
       }

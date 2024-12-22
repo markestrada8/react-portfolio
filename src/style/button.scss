@@ -1,3 +1,5 @@
+@use "mixins";
+
 .btn {
-    @include base-btn();
+    @include mixins.base-btn();
 }

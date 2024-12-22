@@ -1,15 +1,17 @@
+@use "mixins";
+
 .blog-form-container {
-  @include base-grid();
+  @include mixins.base-grid();
   grid-template-columns: 1fr;
   padding: 42px;
 
-  @include input-element();
+  @include mixins.input-element();
   input {
     margin-bottom: 0px;
   }
 
   .image-uploaders {
-    @include base-grid();
+    @include mixins.base-grid();
     grid-template-columns: 200px;
   }
 

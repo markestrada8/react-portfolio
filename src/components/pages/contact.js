@@ -20,19 +20,19 @@ export default function () {
         <div className="contact-bullet-points">
           <div className="contact-bullet-point-group">
             <div className="icon">
-              <FontAwesomeIcon icon={"phone"} />
+              <FontAwesomeIcon icon="phone" />
             </div>
             <div className="text">(615) 938-0355</div>
           </div>
           <div className="contact-bullet-point-group">
             <div className="icon">
-              <FontAwesomeIcon icon={"envelope"} />
+              <FontAwesomeIcon icon="envelope" />
             </div>
             <div className="text">markestrada8@gmail.com</div>
           </div>
           <div className="contact-bullet-point-group">
             <div className="icon">
-              <FontAwesomeIcon icon={"map-marked-alt"} />
+              <FontAwesomeIcon icon="map-marked-alt" />
             </div>
             <div className="text">Nashville, TN</div>
           </div>

@@ -1,4 +1,6 @@
+@use "variables";
+
 .content-loader {
-  color: $teal;
+  color: variables.$teal;
   font-size: 2em;
 }

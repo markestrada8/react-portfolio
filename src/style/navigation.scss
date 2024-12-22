@@ -1,3 +1,5 @@
+@use "variables";
+
 .nav-wrapper {
     display: flex;
     justify-content: space-between;
@@ -7,12 +9,12 @@
         a {
             margin-left: 15px;
             cursor: pointer;
-            color: $teal;
+            color: variables.$teal;
             transition: 0.5s ease-in-out;
         }
 
         &:hover {
-            color: $dark-teal;
+            color: variables.$dark-teal;
         }
     }
 
@@ -29,7 +31,7 @@
         font-size: 0.9rem;
 
         a {
-            color: $grey;
+            color: variables.$grey;
             text-decoration: none;
 
             &:hover {

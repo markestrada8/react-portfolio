@@ -1,35 +1,35 @@
-import React, { Component } from "react";
-import { EditorState, convertToRaw, ContentState } from "draft-js";
-import { Editor } from "react-draft-wysiwyg";
-import draftToHtml from "draftjs-to-html";
-import htmlToDraft from "html-to-draftjs";
-import { faThList } from "@fortawesome/free-solid-svg-icons";
+import React, { Component } from "react"
+import { EditorState, convertToRaw, ContentState } from "draft-js"
+import { Editor } from "react-draft-wysiwyg"
+import draftToHtml from "draftjs-to-html"
+import htmlToDraft from "html-to-draftjs"
+// import { faThList } from "@fortawesome/free-solid-svg-icons"
 
 export default class RichTextEditor extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       editorState: EditorState.createEmpty(),
-    };
+    }
 
-    this.onEditorStateChange = this.onEditorStateChange.bind(this);
-    this.getBase64 = this.getBase64.bind(this);
-    this.uploadFile = this.uploadFile.bind(this);
+    this.onEditorStateChange = this.onEditorStateChange.bind(this)
+    this.getBase64 = this.getBase64.bind(this)
+    this.uploadFile = this.uploadFile.bind(this)
   }
 
   componentDidMount() {
     if (this.props.editMode && this.props.contentToEdit) {
-      const blocksFromHtml = htmlToDraft(this.props.contentToEdit);
-      const { contentBlocks, entityMap } = blocksFromHtml;
+      const blocksFromHtml = htmlToDraft(this.props.contentToEdit)
+      const { contentBlocks, entityMap } = blocksFromHtml
       const contentState = ContentState.createFromBlockArray(
         contentBlocks,
         entityMap
-      );
-      const editorState = EditorState.createWithContent(contentState);
+      )
+      const editorState = EditorState.createWithContent(contentState)
       this.setState({
         editorState,
-      });
+      })
     }
   }
 
@@ -41,20 +41,20 @@ export default class RichTextEditor extends Component {
       this.props.handleRichTextEditorChange(
         draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()))
       )
-    );
+    )
   }
 
   getBase64(file, callback) {
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => callback(reader.result);
-    reader.onerror = (error) => {};
+    let reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = () => callback(reader.result)
+    reader.onerror = (error) => { }
   }
 
   uploadFile(file) {
     return new Promise((resolve, reject) => {
-      this.getBase64(file, (data) => resolve({ data: { link: data } }));
-    });
+      this.getBase64(file, (data) => resolve({ data: { link: data } }))
+    })
   }
 
   render() {
@@ -90,6 +90,6 @@ export default class RichTextEditor extends Component {
           }}
         />
       </div>
-    );
+    )
   }
 }
