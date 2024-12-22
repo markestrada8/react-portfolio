@@ -1,8 +1,8 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-// import contactPic from "../../../static/assets/images/contact/contact-page.jpg"
-import contactPic from '/Users/markestrada/Desktop/Devcamp Files/React/mark-estrada-react-portfolio/static/assets/images/contact/contact-page.jpg'
+import contactPic from "../../../static/assets/images/contact/contact-page.jpg"
+// import contactPic from '/Users/markestrada/Desktop/Devcamp Files/React/mark-estrada-react-portfolio/static/assets/images/contact/contact-page.jpg'
 
 
 export default function () {
